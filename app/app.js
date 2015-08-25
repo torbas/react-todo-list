@@ -1,7 +1,7 @@
 import React from "react";
-import Greeting from "./greeting";
+require('./css/bootstrap.css')
 
 React.render(
-  <Greeting name="World"/>,
+  React.createElement('h1',{},'Hello World!'),
   document.body
 );
