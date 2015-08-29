@@ -6,9 +6,9 @@ module.exports = React.createClass({
     var todos = this.props.todos;
 
     return (
-      <ul>
+      <ul className="list-group">
         {todos.map(function(todo, index) {
-          return <li key={index}>{todo}</li>;
+          return <li className="list-group-item" key={index}>{todo}</li>;
         })}
       </ul>
     )
