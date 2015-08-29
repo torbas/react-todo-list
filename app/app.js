@@ -1,4 +1,4 @@
-import React from "react";
+require('react');
 require('./css/bootstrap.css');
 var Main = require('./components/main');
 
