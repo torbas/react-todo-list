@@ -7,8 +7,8 @@ module.exports = React.createClass({
 
     return (
       <ul>
-        {todos.map(function(todo) {
-          return <li>{todo}</li>;
+        {todos.map(function(todo, index) {
+          return <li key={index}>{todo}</li>;
         })}
       </ul>
     )
