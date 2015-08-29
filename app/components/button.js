@@ -5,9 +5,9 @@ module.exports = React.createClass({
   render: function(){
     var text = this.props.text;
 
-    return {
+    return (
       <button>{text}</button>
-    }
+    )
   }
 
 })
