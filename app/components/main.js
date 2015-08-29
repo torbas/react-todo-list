@@ -1,18 +1,18 @@
 var React = require('react');
+var TodoList = require('./todo_list');
+var TextField = require('./text_field');
+var SubmitButton = require('./button');
 
 module.exports = React.createClass({
   render: function(){
 
-    var name = this.props.name
-
+    var name = this.props.name;
+    var todos = ["shop", "work", "play"];
     return (
       <div>
+        <TextField /><SubmitButton />
         <h1>{name+"'s"} Todo List</h1>
-        <ul>
-          <li>shop</li>
-          <li>play</li>
-          <li>work</li>
-        </ul>
+        <TodoList todo={todos} />
       </div>
     )
 
