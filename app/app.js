@@ -3,6 +3,6 @@ require('./css/bootstrap.css');
 var Main = require('./components/main');
 
 React.render(
-  <Main />,
+  <Main name={"Tim"}/>,
   document.getElementById("main")
 );
