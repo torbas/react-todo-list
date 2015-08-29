@@ -3,7 +3,7 @@ var React = require('react');
 module.exports = React.createClass({
 
   handleClick: function(event){
-    console.log('click');
+    this.props.onButtonClick();
   },
 
   render: function(){
