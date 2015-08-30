@@ -9,7 +9,11 @@ module.exports = React.createClass({
   
   getInitialState: function(){
     return {
-      todos: ["Shop for parts", "Work on Portfolio", "Hang with Friends"],
+      todos: [
+        {task: "Shop for parts", complete: false}, 
+        {task: "Work on Portfolio", complete: false}, 
+        {task: "Hang with Friends", complete:false}
+      ],
       todoInput: ""
     }
   },
@@ -21,9 +25,27 @@ module.exports = React.createClass({
   },
 
   handleAddTodo: function(){
+    var newTask = {
+      task: this.state.todoInput,
+      complete: false
+    }
     this.setState({
-      todos: this.state.todos.concat(this.state.todoInput)
+      todos: this.state.todos.concat(newTask)
     });
+  },
+
+  updateTaskCompletion: function(id){
+    var tmpTodos = this.state.todos.map(function(todo, index) {
+      if(index==id){
+        todo.complete = !todo.complete;
+      }
+      return todo;
+    });
+
+    this.setState({
+      todos: tmpTodos
+    });
+
   },
 
   render: function(){
@@ -41,12 +63,12 @@ module.exports = React.createClass({
             <TextField value={this.state.todoInput} onTextChange={this.handleTodoInput}/>
           </Col>
           <Col size={"1"}>
-            <AddButton text={"Add"} onButtonClick={this.handleAddTodo}/>
+            <AddButton text={"Add"} classes={"btn btn-primary"} onButtonClick={this.handleAddTodo}/>
           </Col>
         </Row>
         <Row>
           <Col size={"12"}>
-            <TodoList todos={todos} />
+            <TodoList todos={todos} onChangeTaskCompletion={this.updateTaskCompletion}/>
           </Col>
         </Row>
       </div>

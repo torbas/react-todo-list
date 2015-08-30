@@ -8,9 +8,10 @@ module.exports = React.createClass({
 
   render: function(){
     var text = this.props.text;
+    var classes = this.props.classes;
 
     return (
-      <button className="btn btn-primary" onClick={this.handleClick}>{text}</button>
+      <button className={classes} onClick={this.handleClick}>{text}</button>
     )
   }
 

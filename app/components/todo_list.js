@@ -1,6 +1,11 @@
 var React = require('react');
+var TodoItem = require('./todo_item');
 
 module.exports = React.createClass({
+  onChangeComplete: function(id){
+    this.props.onChangeTaskCompletion(id);
+  },
+
   render: function(){
 
     var todos = this.props.todos;
@@ -8,8 +13,12 @@ module.exports = React.createClass({
     return (
       <ul className="list-group">
         {todos.map(function(todo, index) {
-          return <li className="list-group-item" key={index}>{todo}</li>;
-        })}
+          return <TodoItem 
+                  todo={todo} 
+                  key={index} 
+                  id= {index}
+                  changeCompleteState={this.onChangeComplete}/>
+        }.bind(this))}
       </ul>
     )
   }
