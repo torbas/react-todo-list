@@ -6,6 +6,14 @@ module.exports = React.createClass({
     this.props.onChangeTaskCompletion(id);
   },
 
+  handleDeleteClick: function(id){
+    this.props.onDeleteTask(id);
+  },
+
+  handleEdit: function(id, value){
+    this.props.onEdit(id, value);
+  },
+
   render: function(){
 
     var todos = this.props.todos;
@@ -17,7 +25,9 @@ module.exports = React.createClass({
                   todo={todo} 
                   key={index} 
                   id= {index}
-                  changeCompleteState={this.onChangeComplete}/>
+                  changeCompleteState={this.onChangeComplete}
+                  onDeleteClick={this.handleDeleteClick}
+                  onTaskEdit={this.handleEdit}/>
         }.bind(this))}
       </ul>
     )

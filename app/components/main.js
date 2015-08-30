@@ -30,7 +30,8 @@ module.exports = React.createClass({
       complete: false
     }
     this.setState({
-      todos: this.state.todos.concat(newTask)
+      todos: this.state.todos.concat(newTask),
+      todoInput: ""
     });
   },
 
@@ -46,6 +47,29 @@ module.exports = React.createClass({
       todos: tmpTodos
     });
 
+  },
+
+  deleteTask: function(id){
+    var tmpTodos = this.state.todos.filter(function(todo, index) {
+      return index != id;
+    });
+
+    this.setState({
+      todos: tmpTodos
+    });
+  },
+
+  editTask: function(id, value){
+    var tmpTodos = this.state.todos.map(function(todo, index) {
+      if(index==id){
+        todo.task = value;
+      }
+      return todo;
+    });
+
+    this.setState({
+      todos: tmpTodos
+    });
   },
 
   render: function(){
@@ -68,7 +92,10 @@ module.exports = React.createClass({
         </Row>
         <Row>
           <Col size={"12"}>
-            <TodoList todos={todos} onChangeTaskCompletion={this.updateTaskCompletion}/>
+            <TodoList todos={todos} 
+              onChangeTaskCompletion={this.updateTaskCompletion} 
+              onDeleteTask={this.deleteTask}
+              onEdit={this.editTask} />
           </Col>
         </Row>
       </div>

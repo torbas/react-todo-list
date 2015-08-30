@@ -9,9 +9,12 @@ module.exports = React.createClass({
   render: function(){
     var text = this.props.text;
     var classes = this.props.classes;
+    var styles = {
+      "margin": "5px"
+    };
 
     return (
-      <button className={classes} onClick={this.handleClick}>{text}</button>
+      <button className={classes} style={styles} onClick={this.handleClick}>{text}</button>
     )
   }
 
